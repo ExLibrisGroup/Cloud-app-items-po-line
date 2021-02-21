@@ -1,0 +1,24 @@
+<ng-container *ngTemplateOutlet="entities.length > 0 ? content : noItems">
+</ng-container>
+
+<ng-template #content>
+  <div class="eca-actions">
+    <button mat-flat-button color="secondary" (click)="onRestoreAllItems()">
+      Restore All
+    </button>
+    <button mat-flat-button color="primary" (click)="onSaveAllClicked()">
+      Save All
+    </button>
+  </div>
+  <app-items-list
+    [items]="items"
+    (itemToRestore)="onRestoreItem($event)"
+    (itemToSave)="onSaveItem($event)"
+  ></app-items-list>
+  <div class="loading-shade" *ngIf="isLoading">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+</ng-template>
+<ng-template #noItems>
+  <p>Please navigate to a page with physical items to use this app.</p>
+</ng-template>

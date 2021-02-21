@@ -1,0 +1,122 @@
+:host {
+  &:first-child {
+    mat-card {
+      margin-top: 10px;
+    }
+  }
+
+  mat-card {
+    .app-version-with-tooltip {
+      padding-top: 15px;
+    }
+    .green-check-image {
+      border-radius: 50%;
+      height: 20px;
+      padding-right: 5px;
+    }
+  }
+
+  mat-card-content {
+    color: gray;
+    .link-color {
+      color: darkblue;
+    }
+    .rounded-image {
+      border-radius: 50%;
+      height: 30px;
+      padding: 5px;
+    }
+    .list-of-urls {
+      padding-left: 25px;
+    }
+    .separator-line {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+    .by {
+      margin-right: 3px;
+    }
+    .view-app-wrapper,
+    .app-version {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-top: 10px;
+      .vertical-line {
+        height: 20px;
+        margin-left: 5px;
+        margin-right: 10px;
+        opacity: 0.5;
+      }
+    }
+    .app-center-link {
+      display: flex;
+      align-items: center;
+    }
+    .app-version {
+      margin-bottom: 10px;
+    }
+    .terms {
+      margin-top: 10px;
+    }
+    .content-subtitle {
+      font-weight: bold;
+    }
+  }
+
+  mat-expansion-panel {
+    margin-left: 0 !important;
+    color: inherit;
+  }
+  mat-card {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+
+    margin: 20px 0;
+
+    p {
+      padding-left: 5px;
+      margin: 0;
+    }
+    .mat-card-header-text {
+      margin: 0px;
+      padding-left: 5px;
+    }
+  }
+  mat-form-field {
+    width: 100%;
+  }
+  .number-field {
+    width: 40px;
+    text-align: center;
+  }
+  .mat-card-subtitle {
+    margin-bottom: 5px;
+  }
+  ::ng-deep .mat-expansion-panel-body {
+    padding: 0 !important;
+  }
+  ::ng-deep .mat-form-field-appearance-standard .mat-form-field-flex {
+    padding-top: 0em !important;
+  }
+  ::ng-deep .mat-form-field-infix {
+    border-top: 0 !important;
+  }
+}
+#chronTable {
+  width: 100% !important;
+}
+td {
+  text-align: center;
+  /* center checkbox horizontally */
+  vertical-align: middle;
+}
+.card.mat-card {
+  padding: 5px !important;
+}
+.edit-box
+{
+  margin-top: 25px;
+  padding-left: 5px;
+  // position: relative;
+}
