@@ -2,7 +2,7 @@
    "id": "multiple-item-edit",
    "title": "Multiple Item Edit",
    "subtitle": "App that lets you edit multiple items at once",
-   "author": "Liron Menda",
+   "author": "Ex Libris",
    "description": "This app lets you edit physical items that appears on your Alma. The editables fields are: barcode , description , enumeration ,chronology ",
    "icon": {
       "type": "font",
