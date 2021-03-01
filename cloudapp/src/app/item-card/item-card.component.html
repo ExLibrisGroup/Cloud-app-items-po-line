@@ -21,27 +21,12 @@
       <strong style="font-weight: bold">Description : </strong
       >{{ item.item_data.description }}
     </p>
-    
-    <!-- <mat-card-actions> -->
-    <!-- <mat-expansion-panel class="mat-elevation-z0" #panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title
-            >{{
-              panel.expanded
-                ? "Click here to finish editing"
-                : "Click here to edit"
-            }}
-          </mat-panel-title> -->
-    <!-- </mat-expansion-panel-header> -->
     <div class="edit-box" *ngIf="opened">
       <mat-form-field>
         <mat-label>Barcode</mat-label>
         <input matInput [(ngModel)]="item.item_data.barcode" type="text" />
       </mat-form-field>
-      <mat-form-field>
-        <mat-label>Description</mat-label>
-        <input matInput [(ngModel)]="item.item_data.description" type="text" />
-      </mat-form-field>
+
       <label
         for="enumTable"
         style="font-weight: bold; display: block; text-align: center"
@@ -88,7 +73,10 @@
           </tr>
         </tbody>
       </table>
-      <hr />
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <input matInput [(ngModel)]="item.item_data.description" type="text" />
+      </mat-form-field>
       <div class="eca-actions">
         <button
           mat-flat-button
