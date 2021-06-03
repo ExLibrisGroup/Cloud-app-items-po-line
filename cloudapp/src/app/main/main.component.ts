@@ -1,6 +1,6 @@
 import { Subscription } from "rxjs";
 import { concatMap, finalize } from "rxjs/operators";
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from "@angular/core";
 import {
   CloudAppEventsService,
   Entity,
@@ -20,13 +20,14 @@ import { AlmaService } from "../services/alma.service";
 export class MainComponent implements OnInit, OnDestroy {
   private pageLoad$: Subscription;
   isLoading: boolean = false;
+  generateDescription : boolean =false;
   items: Array<Item> = [];
   entities: Array<Entity> = [];
 
   constructor(
     private almaService: AlmaService,
     private eventsService: CloudAppEventsService,
-    private alertService: AlertService
+    private alertService: AlertService,
   ) {}
 
   ngOnInit() {
@@ -93,7 +94,7 @@ export class MainComponent implements OnInit, OnDestroy {
   onSaveAllClicked() {
     this.isLoading = true;
     this.almaService
-      .updateArrayOfItems(this.items)
+      .updateArrayOfItems(this.items,this.generateDescription)
       .pipe(
         finalize(() => (this.isLoading = false)),
         concatMap(() => this.eventsService.refreshPage())
@@ -111,11 +112,11 @@ export class MainComponent implements OnInit, OnDestroy {
   onSaveItem(data: { item: Item; idx: number }) {
     this.isLoading = true;
     this.almaService
-      .updateItem(data.item)
+      .updateItem(data.item,this.generateDescription)
       .pipe(
         finalize(() => (this.isLoading = false)),
         concatMap((item: Item) =>
-          this.almaService.getItem(this.almaService.buildItemLink(item))
+          this.almaService.getItem(this.almaService.buildItemLink(item,null))
         ),
         concatMap(() => this.eventsService.refreshPage())
       )
@@ -141,4 +142,6 @@ export class MainComponent implements OnInit, OnDestroy {
       },
     });
   }
+
+
 }

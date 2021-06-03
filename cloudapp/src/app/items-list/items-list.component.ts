@@ -8,6 +8,7 @@ import { Item } from "../models/item.model";
 })
 export class ItemsListComponent implements OnInit {
   @Input() items: Item[];
+  @Input() hideDescription : boolean;
   @Output() itemToRestore = new EventEmitter<number>();
   @Output() itemToSave = new EventEmitter<{ item: Item; idx: number }>();
 

@@ -3,8 +3,7 @@
 
   <div style="margin: 4px">
     <mat-card-header>
-      <mat-card-title
-        ><strong>Title : </strong> {{ item.bib_data.title }}
+      <mat-card-title><strong>Title : </strong> {{ item.bib_data.title }}
       </mat-card-title>
     </mat-card-header>
   </div>
@@ -14,12 +13,10 @@
       {{ item.bib_data.author }}
     </p>
     <p>
-      <strong style="font-weight: bold">Barcode : </strong
-      >{{ item.item_data.barcode }}
+      <strong style="font-weight: bold">Barcode : </strong>{{ item.item_data.barcode }}
     </p>
     <p>
-      <strong style="font-weight: bold">Description : </strong
-      >{{ item.item_data.description }}
+      <strong style="font-weight: bold">Description : </strong>{{ item.item_data.description }}
     </p>
     <div class="edit-box" *ngIf="opened">
       <mat-form-field>
@@ -27,11 +24,7 @@
         <input matInput [(ngModel)]="item.item_data.barcode" type="text" />
       </mat-form-field>
 
-      <label
-        for="enumTable"
-        style="font-weight: bold; display: block; text-align: center"
-        >Enumeration</label
-      >
+      <label for="enumTable" style="font-weight: bold; display: block; text-align: center">Enumeration</label>
       <table id="enumTable" class="table table-border">
         <thead class="text-nowrap">
           <th *ngFor="let letter of enumeration">{{ letter | uppercase}}</th>
@@ -40,21 +33,13 @@
           <tr>
             <td *ngFor="let i of enumeration">
               <mat-form-field class="number-field">
-                <input
-                  matInput
-                  [(ngModel)]="item.item_data['enumeration_' + i]"
-                  type="text"
-                />
+                <input matInput [(ngModel)]="item.item_data['enumeration_' + i]" type="text" />
               </mat-form-field>
             </td>
           </tr>
         </tbody>
       </table>
-      <label
-        for="chronTable"
-        style="font-weight: bold; display: block; text-align: center"
-        >Chronology</label
-      >
+      <label for="chronTable" style="font-weight: bold; display: block; text-align: center">Chronology</label>
       <table id="chronTable" class="table table-border">
         <thead class="text-nowrap">
           <th *ngFor="let letter of chronology">{{ letter | uppercase }}</th>
@@ -63,35 +48,21 @@
           <tr>
             <td *ngFor="let i of chronology">
               <mat-form-field class="number-field">
-                <input
-                  matInput
-                  [(ngModel)]="item.item_data['chronology_' + i]"
-                  type="text"
-                />
+                <input matInput [(ngModel)]="item.item_data['chronology_' + i]" type="text" />
               </mat-form-field>
             </td>
           </tr>
         </tbody>
       </table>
-      <mat-form-field>
+      <mat-form-field *ngIf="!hideDescription">
         <mat-label>Description</mat-label>
         <input matInput [(ngModel)]="item.item_data.description" type="text" />
       </mat-form-field>
       <div class="eca-actions">
-        <button
-          mat-flat-button
-          (click)="onRestoreItem()"
-          style="float: right"
-          color="secondary"
-        >
+        <button mat-flat-button (click)="onRestoreItem()" style="float: right" color="secondary">
           Restore
         </button>
-        <button
-          mat-flat-button
-          (click)="onSaveItem()"
-          style="float: right"
-          color="primary"
-        >
+        <button mat-flat-button (click)="onSaveItem()" style="float: right" color="primary">
           Save
         </button>
       </div>

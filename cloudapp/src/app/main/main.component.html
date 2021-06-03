@@ -10,11 +10,12 @@
       Save All
     </button>
   </div>
-  <app-items-list
-    [items]="items"
-    (itemToRestore)="onRestoreItem($event)"
-    (itemToSave)="onSaveItem($event)"
-  ></app-items-list>
+  <div>
+    <mat-checkbox [checked]="generateDescription" (change)="generateDescription=!generateDescription">Generate
+      Description</mat-checkbox>
+  </div>
+  <app-items-list [items]="items" [hideDescription]="generateDescription" (itemToRestore)="onRestoreItem($event)"
+    (itemToSave)="onSaveItem($event)"></app-items-list>
   <div class="loading-shade" *ngIf="isLoading">
     <mat-spinner diameter="50"></mat-spinner>
   </div>

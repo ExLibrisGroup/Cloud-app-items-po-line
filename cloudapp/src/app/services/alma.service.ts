@@ -40,7 +40,7 @@ export class AlmaService {
     return this.restService.call<Item>({
       url: link,
       queryParams:{view:'label'}
-    }).pipe(map((res)=>{console.log(res);return res;}));
+    });
   }
 
   getItemsFromEntitiesArray(entities: Array<Entity>) {
@@ -49,20 +49,24 @@ export class AlmaService {
     return forkJoin(observables);
   }
 
-  buildItemLink(item: Item) {
-    return `/bibs/${item.bib_data.mms_id}/holdings/${item.holding_data.holding_id}/items/${item.item_data.pid}`;
+  buildItemLink(item: Item ,generateDescription:boolean) {
+    if (generateDescription==null) // For building link for get
+    { 
+      return `/bibs/${item.bib_data.mms_id}/holdings/${item.holding_data.holding_id}/items/${item.item_data.pid}`;
+    }
+    return `/bibs/${item.bib_data.mms_id}/holdings/${item.holding_data.holding_id}/items/${item.item_data.pid}?generate_description=${generateDescription}`;
   }
-  updateItem(item: Item) {
+  updateItem(item: Item,generateDescription : boolean) {
     let req: ExRequest = {
       requestBody: item,
-      url: this.buildItemLink(item),
+      url: this.buildItemLink(item,generateDescription),
       method: HttpMethod.PUT,
     };
     return this.restService.call<Item>(req);
   }
-  updateArrayOfItems(items: Item[]) {
+  updateArrayOfItems(items: Item[],generateDescription : boolean) {
     let observables = [];
-    items.forEach((item) => observables.push(this.updateItem(item)));
+    items.forEach((item) => observables.push(this.updateItem(item,generateDescription)));
     return forkJoin(observables);
   }
 }
