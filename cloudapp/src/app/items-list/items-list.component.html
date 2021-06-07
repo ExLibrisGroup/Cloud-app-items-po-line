@@ -1,9 +1,5 @@
 <div>
-  <app-item-card
-    *ngFor="let item of items"
-    [item]="item"
-    (itemToRestore)="onRestoreItem($event)"
-    (itemToSave)="onSaveItem($event)"
-  >
+  <app-item-card *ngFor="let item of items" [item]="item" [hideDescription]="hideDescription"
+    (itemToRestore)="onRestoreItem($event)" (itemToSave)="onSaveItem($event)">
   </app-item-card>
 </div>

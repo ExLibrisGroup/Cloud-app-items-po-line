@@ -16,6 +16,7 @@ import { CHRON, ENUM } from "../static/constants";
 })
 export class ItemCardComponent implements OnInit {
   @Input() item: Item;
+  @Input() hideDescription: boolean;
   @Output() itemToRestore = new EventEmitter<Item>();
   @Output() itemToSave = new EventEmitter<Item>();
 
