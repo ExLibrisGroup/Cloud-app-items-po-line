@@ -22,6 +22,7 @@ export class ItemCardComponent implements OnInit {
 
   @Input() opened: boolean =false;
   realBarcode: string;
+  realTempCallNumber: string;
 
   get enumeration() {
     return ENUM;
@@ -33,10 +34,12 @@ export class ItemCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.realBarcode = this.item.item_data.barcode;
+    this.realTempCallNumber = this.item.holding_data.temp_call_number; 
   }
 
   onRestoreItem() {
     this.item.item_data.barcode = this.realBarcode;
+    this.item.holding_data.temp_call_number = this.realTempCallNumber;
     this.itemToRestore.emit(this.item);
   }
   onSaveItem() {

@@ -24,6 +24,7 @@ export interface Item {
   };
   holding_data: {
     holding_id: string;
+    temp_call_number: string;
   };
   link: string;
 }

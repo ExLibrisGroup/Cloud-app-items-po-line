@@ -24,6 +24,11 @@
         <input matInput [(ngModel)]="item.item_data.barcode" type="text" />
       </mat-form-field>
 
+      <mat-form-field>
+        <mat-label>Temporary call number</mat-label>
+        <input matInput [(ngModel)]="item.holding_data.temp_call_number" type="text" />
+      </mat-form-field>
+
       <label for="enumTable" style="font-weight: bold; display: block; text-align: center">Enumeration</label>
       <table id="enumTable" class="table table-border">
         <thead class="text-nowrap">
