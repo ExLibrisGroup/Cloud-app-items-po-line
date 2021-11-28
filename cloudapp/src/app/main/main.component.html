@@ -3,7 +3,10 @@
 
 <ng-template #content>
   <div class="eca-actions">
-    <button mat-flat-button color="secondary" (click)="onRestoreAllItems()">
+    <button mat-flat-button color="secondary" (click)="onEditAllItems()">
+      Edit All
+    </button>
+    <button mat-flat-button color="secondary" (click)="onRestoreAllItems()"> 
       Restore All
     </button>
     <button mat-flat-button color="primary" (click)="onSaveAllClicked()">
@@ -14,7 +17,7 @@
     <mat-checkbox [checked]="generateDescription" (change)="generateDescription=!generateDescription">Generate
       Description</mat-checkbox>
   </div>
-  <app-items-list [items]="items" [hideDescription]="generateDescription" (itemToRestore)="onRestoreItem($event)"
+  <app-items-list [items]="items" [hideDescription]="generateDescription" [opened]="allEdit" (itemToRestore)="onRestoreItem($event)"
     (itemToSave)="onSaveItem($event)"></app-items-list>
   <div class="loading-shade" *ngIf="isLoading">
     <mat-spinner diameter="50"></mat-spinner>

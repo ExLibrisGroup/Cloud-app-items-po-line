@@ -20,7 +20,7 @@ export class ItemCardComponent implements OnInit {
   @Output() itemToRestore = new EventEmitter<Item>();
   @Output() itemToSave = new EventEmitter<Item>();
 
-  opened: boolean =false;
+  @Input() opened: boolean =false;
   realBarcode: string;
 
   get enumeration() {

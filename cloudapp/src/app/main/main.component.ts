@@ -21,6 +21,7 @@ export class MainComponent implements OnInit, OnDestroy {
   private pageLoad$: Subscription;
   isLoading: boolean = false;
   generateDescription : boolean =false;
+  allEdit : boolean=false;
   items: Array<Item> = [];
   entities: Array<Entity> = [];
 
@@ -143,5 +144,9 @@ export class MainComponent implements OnInit, OnDestroy {
     });
   }
 
+  onEditAllItems() {
+    console.log("onEditAllItems");
+    this.allEdit = true;
+  }
 
 }
