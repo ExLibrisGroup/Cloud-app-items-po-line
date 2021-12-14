@@ -4,10 +4,10 @@ import {
   Input,
   OnInit,
   Output,
-  ViewChild,
 } from "@angular/core";
 import { Item } from "../models/item.model";
 import { CHRON, ENUM } from "../static/constants";
+import { Materials } from "../services/material-types.service"
 
 @Component({
   selector: "app-item-card",
@@ -30,11 +30,13 @@ export class ItemCardComponent implements OnInit {
   get chronology() {
     return CHRON;
   }
-  constructor() {}
+  constructor(
+    private materials: Materials,
+  ) {}
 
   ngOnInit(): void {
     this.realBarcode = this.item.item_data.barcode;
-    this.realTempCallNumber = this.item.holding_data.temp_call_number; 
+    this.realTempCallNumber = this.item.holding_data.temp_call_number;
   }
 
   onRestoreItem() {

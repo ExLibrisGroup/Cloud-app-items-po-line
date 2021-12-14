@@ -24,6 +24,15 @@
         <input matInput [(ngModel)]="item.item_data.barcode" type="text" />
       </mat-form-field>
 
+      <mat-form-field floatLabel=always>
+        <mat-label>Material type</mat-label>
+        <mat-select [(value)]=item.item_data.physical_material_type.value>
+          <mat-option *ngFor="let material of materials.types" [value]="material.value">
+            {{material.desc}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
       <mat-form-field>
         <mat-label>Temporary call number</mat-label>
         <input matInput [(ngModel)]="item.holding_data.temp_call_number" type="text" />
