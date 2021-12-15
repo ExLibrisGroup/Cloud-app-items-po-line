@@ -16,6 +16,10 @@ export interface Item {
     chronology_k: string;
     chronology_l: string;
     chronology_m: string;
+    physical_material_type : {
+      value: string;
+      desc: string;
+    }
   };
   bib_data: {
     title: string;

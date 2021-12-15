@@ -20,10 +20,12 @@ export class ItemCardComponent implements OnInit {
   @Input() hideDescription: boolean;
   @Output() itemToRestore = new EventEmitter<Item>();
   @Output() itemToSave = new EventEmitter<Item>();
+  material_types = this.materials.types
 
   @Input() opened: boolean =false;
   realBarcode: string;
   realTempCallNumber: string;
+  realMaterialType: string;
 
   get enumeration() {
     return ENUM;
@@ -34,15 +36,16 @@ export class ItemCardComponent implements OnInit {
   constructor(
     private materials: Materials,
   ) {}
-
   ngOnInit(): void {
     this.realBarcode = this.item.item_data.barcode;
     this.realTempCallNumber = this.item.holding_data.temp_call_number;
+    this.realMaterialType = this.item.item_data.physical_material_type.value;
   }
 
   onRestoreItem() {
     this.item.item_data.barcode = this.realBarcode;
     this.item.holding_data.temp_call_number = this.realTempCallNumber;
+    this.realMaterialType = this.item.item_data.physical_material_type.value;
     this.itemToRestore.emit(this.item);
   }
   onSaveItem() {
