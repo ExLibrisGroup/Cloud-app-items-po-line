@@ -11,6 +11,8 @@ import {
 } from "@exlibris/exl-cloudapp-angular-lib";
 import { Item } from "../models/item.model";
 import { AlmaService } from "../services/alma.service";
+import { CloudAppRestService } from '@exlibris/exl-cloudapp-angular-lib';
+import { Materials } from "../services/material-types.service"
 
 @Component({
   selector: "app-main",
@@ -29,9 +31,15 @@ export class MainComponent implements OnInit, OnDestroy {
     private almaService: AlmaService,
     private eventsService: CloudAppEventsService,
     private alertService: AlertService,
+    private restService: CloudAppRestService,
+    private materials: Materials,
   ) {}
 
   ngOnInit() {
+    this.restService.call('/conf/code-tables/PhysicalMaterialType').subscribe(
+      result => {
+        this.materials.types = result.row
+      })
     this.pageLoad$ = this.eventsService.onPageLoad(this.onPageLoad);
     setInterval(
       () =>

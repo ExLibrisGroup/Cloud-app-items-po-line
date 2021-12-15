@@ -27,8 +27,8 @@
       <mat-form-field floatLabel=always>
         <mat-label>Material type</mat-label>
         <mat-select [(value)]=item.item_data.physical_material_type.value>
-          <mat-option *ngFor="let material of materials.types" [value]="material.value">
-            {{material.desc}}
+          <mat-option *ngFor="let material of materials.types" [value]="material.code">
+            {{material.description}}
           </mat-option>
         </mat-select>
       </mat-form-field>
