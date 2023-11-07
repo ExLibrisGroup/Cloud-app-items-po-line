@@ -16,7 +16,16 @@ export interface Item {
     chronology_k: string;
     chronology_l: string;
     chronology_m: string;
+    alternative_call_number: string;
     physical_material_type : {
+      value: string;
+      desc: string;
+    }
+    policy : {
+      value: string;
+      desc: string;
+    }
+    library : {
       value: string;
       desc: string;
     }
@@ -29,6 +38,12 @@ export interface Item {
   holding_data: {
     holding_id: string;
     temp_call_number: string;
+    copy_id: string;
+    in_temp_location : boolean;
+    temp_library  : {
+      value: string;
+      desc: string;
+    }
   };
   link: string;
 }

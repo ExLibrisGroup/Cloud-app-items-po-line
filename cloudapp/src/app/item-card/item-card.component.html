@@ -33,6 +33,20 @@
         </mat-select>
       </mat-form-field>
 
+      <mat-form-field floatLabel=always>
+        <mat-label>Item policy</mat-label>
+        <mat-select [(value)]='item.item_data.policy.value'>
+          <mat-option *ngFor="let policy of policy_types" [value]="policy.code">
+            {{policy.description}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Item call number</mat-label>
+        <input matInput [(ngModel)]="item.item_data.alternative_call_number" type="text" />
+      </mat-form-field>
+
       <mat-form-field>
         <mat-label>Temporary call number</mat-label>
         <input matInput [(ngModel)]="item.holding_data.temp_call_number" type="text" />
@@ -72,6 +86,11 @@
         <mat-label>Description</mat-label>
         <input matInput [(ngModel)]="item.item_data.description" type="text" />
       </mat-form-field>
+      <mat-form-field>
+        <mat-label>Copy ID</mat-label>
+        <input matInput [(ngModel)]="item.holding_data.copy_id" type="text" />
+      </mat-form-field>
+
       <div class="eca-actions">
         <button mat-flat-button (click)="onRestoreItem()" style="float: right" color="secondary">
           Restore
